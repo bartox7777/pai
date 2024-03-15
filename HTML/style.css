@@ -1,0 +1,54 @@
+li {
+    list-style-type: square
+}
+
+#cena {
+    color: red;
+    font-weight: bold;
+}
+
+.wstep {
+    font-style: italic;
+}
+
+td img {
+    border-style: solid;
+    border-color: blue;
+}
+
+td img:hover {
+    border-color: red;
+}
+
+h1+h2 {
+    letter-spacing: 5px;
+}
+
+td[colspan="2"] p {
+    font-size: small;
+}
+
+p+p {
+    color: gray;
+}
+
+#tlo {
+    background-color: #f0f0f0;
+    padding: 5px;
+}
+
+body {
+    background-image: url(smok.jpg);
+    background-repeat: repeat;
+    background-size: 300px;
+}
+
+/* W przypadku konfliktu stosowania reguł stosowana jest ta ostatnia */
+
+h1 {
+    color: blue
+}
+
+h1 {
+    color: green
+}
