@@ -35,6 +35,7 @@ main {
 }
 
 .content {
+    /* grow, shrink, basis */
     flex: 1 0 auto;
 }
 
