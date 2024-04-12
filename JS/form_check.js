@@ -34,7 +34,7 @@ function alterRows(i, e) {
             e.setAttribute("style", "background-color: Aqua;");
         }
         e = e.nextSibling;
-        while (e && e.nodeType != 1) {
+        while (e && e.nodeType != 1) { // nodetype != 1 -> nie jest elementem np. <p> czy <div>
             e = e.nextSibling;
         }
         alterRows(++i, e);
@@ -54,12 +54,12 @@ function prevNode(e) {
     return e;
 }
 function swapRows(b) {
-    let tab = prevNode(b.previousSibling);
-    let tBody = nextNode(tab.firstChild);
-    let lastNode = prevNode(tBody.lastChild);
-    tBody.removeChild(lastNode);
-    let firstNode = nextNode(tBody.firstChild);
-    tBody.insertBefore(lastNode, firstNode);
+    let tab = prevNode(b.previousSibling); // tabela
+    let tBody = nextNode(tab.firstChild); // tbody
+    let lastNode = prevNode(tBody.lastChild); // ostatni wiersz
+    tBody.removeChild(lastNode); // usuwamy ostatni wiersz
+    let firstNode = nextNode(tBody.firstChild); // pierwszy wiersz
+    tBody.insertBefore(lastNode, firstNode); // wstawiamy na początek
 }
 
 function cnt(form, msg, maxSize) {
@@ -70,11 +70,11 @@ function cnt(form, msg, maxSize) {
 }
 
 function validate(form) {
-    var res = true;
-    res &&= checkStringAndFocus(form.elements["f_imie"], "Podaj imię!", isWhiteSpaceOrEmpty);
-    res &&= checkStringAndFocus(form.elements["f_nazwisko"], "Podaj nazwisko!", isWhiteSpaceOrEmpty);
-    res &&= checkStringAndFocus(form.elements["f_email"], "Podaj właściwy e-mail!", checkEmail);
-    res &&= checkStringAndFocus(form.elements["f_ulica"], "Podaj ulicę!", isWhiteSpaceOrEmpty);
-    res &&= checkStringAndFocus(form.elements["f_miasto"], "Podaj miasto!", isWhiteSpaceOrEmpty);
-    return res;
+    let res = 0;
+    res &= checkStringAndFocus(form.elements["f_imie"], "Podaj imię!", isWhiteSpaceOrEmpty); // implicit int cast
+    res &= checkStringAndFocus(form.elements["f_nazwisko"], "Podaj nazwisko!", isWhiteSpaceOrEmpty);
+    res &= checkStringAndFocus(form.elements["f_email"], "Podaj właściwy e-mail!", checkEmail);
+    res &= checkStringAndFocus(form.elements["f_ulica"], "Podaj ulicę!", isWhiteSpaceOrEmpty);
+    res &= checkStringAndFocus(form.elements["f_miasto"], "Podaj miasto!", isWhiteSpaceOrEmpty);
+    return !!res; // implicit bool cast
 }
