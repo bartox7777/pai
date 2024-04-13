@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Q&A</title>
+    <style>
+        #r {
+            background-color: Red;
+        }
+
+        #g {
+            background-color: Green;
+        }
+
+        #b {
+            background-color: Blue;
+        }
+
+        #r,
+        #g,
+        #b {
+            height: 100px;
+            width: 500px;
+            border: 1px solid black;
+            text-align: center;
+        }
+    </style>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        function Down() {
+            var div = $(this); // Przechwytuje element div, który jest kliknięty
+            $('div').mousemove(function (e) { // Dodaje zdarzenie obsługujące ruch myszy na wszystkich divach
+                div.remove(); // Usuwa element div z bieżącej pozycji
+                div.insertAfter(e.target); // Wstawia element div po elemencie, nad którym znajduje się mysz
+                div.mousedown(Down); // Ponownie przypisuje zdarzenie mousedown do elementu div
+            });
+            $('div').mouseup(function (e) { // Dodaje zdarzenie obsługujące puszczenie myszy na wszystkich divach
+                $('div').unbind('mousemove'); // Usuwa zdarzenie mousemove z wszystkich divów
+            });
+        }
+        $(document).ready(function () { // Główna funkcja wykonuje się, gdy dokument jest gotowy
+            $('div').mousedown(Down); // Dodaje zdarzenie mousedown do wszystkich divów
+        });
+    </script>
+</head>
+
+<body>
+    <div id="r"></div>
+    <div id="g"></div>
+    <div id="b"></div>
+</body>
+
+</html>
