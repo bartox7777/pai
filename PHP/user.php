@@ -30,11 +30,10 @@
     <br>
     <?php
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $currentDir = getcwd();
+        $currentDir = getcwd(); // get current directory
         $uploadDirectory = "/imgs/";
-        $fileName = $_FILES['fileToUpload']['name'];
-        $fileSize = $_FILES['fileToUpload']['size'];
-        $fileTmpName  = $_FILES['fileToUpload']['tmp_name'];
+        $fileName = $_FILES['fileToUpload']['name']; // get file name
+        $fileTmpName  = $_FILES['fileToUpload']['tmp_name']; // get temporary file name
         $fileType = $_FILES['fileToUpload']['type'];
         if (
             $fileName != "" and
